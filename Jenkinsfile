@@ -8,7 +8,14 @@ pipeline {
 
             steps {
 
-                sh 'cd terraform && terraform init'
+                sh '''
+                export AWS_ACCESS_KEY_ID=YOUR_ACCESS_KEY
+                export AWS_SECRET_ACCESS_KEY=YOUR_SECRET_KEY
+                export AWS_DEFAULT_REGION=us-east-1
+
+                cd terraform
+                terraform init
+                '''
             }
         }
 
@@ -16,7 +23,14 @@ pipeline {
 
             steps {
 
-                sh 'cd terraform && terraform validate'
+                sh '''
+                export AWS_ACCESS_KEY_ID=YOUR_ACCESS_KEY
+                export AWS_SECRET_ACCESS_KEY=YOUR_SECRET_KEY
+                export AWS_DEFAULT_REGION=us-east-1
+
+                cd terraform
+                terraform validate
+                '''
             }
         }
 
@@ -24,7 +38,14 @@ pipeline {
 
             steps {
 
-                sh 'cd terraform && terraform apply -auto-approve'
+                sh '''
+                export AWS_ACCESS_KEY_ID=YOUR_ACCESS_KEY
+                export AWS_SECRET_ACCESS_KEY=YOUR_SECRET_KEY
+                export AWS_DEFAULT_REGION=us-east-1
+
+                cd terraform
+                terraform apply -auto-approve
+                '''
             }
         }
     }

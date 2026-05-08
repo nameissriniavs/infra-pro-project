@@ -2,7 +2,7 @@ resource "aws_key_pair" "deployer" {
 
   key_name   = "infra-key"
 
-  public_key = file("/root/.ssh/id_rsa.pub")
+  public_key = file("${path.module}/id_rsa.pub")
 }
 
 data "aws_vpc" "default" {
